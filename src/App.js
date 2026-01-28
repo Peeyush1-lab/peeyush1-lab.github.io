@@ -22,16 +22,31 @@ function App() {
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   useEffect(() => {
+    const handleHashChange = () => {
+      const page = window.location.hash.replace('#', '');
+      if (page) setCurrentPage(page);
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    window.location.hash = currentPage;
+  }, [currentPage]);
+
+  useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.ctrlKey && e.shiftKey && e.key === 'L') {
-        setIsDarkMode(!isDarkMode);
+        setIsDarkMode(prev => !prev);
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isDarkMode]);
-  
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
@@ -39,15 +54,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Load theme preference from localStorage
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-    }
+    if (savedTheme === 'dark') setIsDarkMode(true);
   }, []);
 
   useEffect(() => {
-    // Save theme preference and apply to document
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -66,7 +77,14 @@ function App() {
       case 'skills':
         return <SkillsPage skills={skills} isDarkMode={isDarkMode} />;
       case 'projects':
-        return <ProjectsPage projects={projects} isDarkMode={isDarkMode} selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />;
+        return (
+          <ProjectsPage
+            projects={projects}
+            isDarkMode={isDarkMode}
+            selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
+          />
+        );
       case 'achievements':
         return <AchievementsPage achievements={achievements} isDarkMode={isDarkMode} />;
       case 'education':
@@ -79,10 +97,11 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode
-        ? 'bg-gray-900 text-white'
-        : 'bg-white text-gray-900'
-      }`}>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+      }`}
+    >
       <Navigation
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

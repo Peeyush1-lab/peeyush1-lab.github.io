@@ -32,7 +32,7 @@ const Footer = ({ isDarkMode }) => {
             <ul className="space-y-2">
               {['About', 'Projects', 'Skills', 'Contact'].map((link) => (
                 <li key={link}>
-                  <a href={`${link.toLowerCase()}`} className={`text-sm transition-colors ${
+                  <a href={`#${link.toLowerCase()}`} className={`text-sm transition-colors ${
                     isDarkMode
                       ? 'text-gray-400 hover:text-blue-400'
                       : 'text-gray-600 hover:text-blue-600'
