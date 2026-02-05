@@ -46,7 +46,7 @@ const ContactPage = ({ isDarkMode }) => {
             </div>
           </a>
 
-          <a href="https://www.linkedin.com/in/peeyush-tiwari-105b22323/" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.linkedin.com/in/peeyush-tiwari/" target="_blank" rel="noopener noreferrer"
              className={`rounded-xl p-8 backdrop-blur-sm transition-all hover:scale-105 group ${isDarkMode ? 'bg-slate-800/50 border border-slate-700 hover:border-cyan-500/50' : 'bg-gray-50 border border-gray-300 hover:border-cyan-500/50'}`}>
             <div className="flex items-start gap-4">
               <div className="p-4 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-lg group-hover:from-cyan-500/30 group-hover:to-blue-500/30 transition-all">

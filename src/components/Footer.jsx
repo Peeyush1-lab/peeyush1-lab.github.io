@@ -64,7 +64,7 @@ const Footer = ({ isDarkMode }) => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://www.linkedin.com/in/peeyush-tiwari-105b22323/"
+                href="https://www.linkedin.com/in/peeyush-tiwari/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-10 h-10 border rounded-lg flex items-center justify-center transition-all ${
