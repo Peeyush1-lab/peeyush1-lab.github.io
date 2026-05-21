@@ -144,7 +144,7 @@ const HomePage = ({ setCurrentPage, isDarkMode }) => {
               <div className="flex gap-4 pt-4">
                 {[
                   { icon: <Github className="w-5 h-5" />, link: "https://github.com/Peeyush1-lab", label: "GitHub" },
-                  { icon: <Linkedin className="w-5 h-5" />, link: "https://www.linkedin.com/in/peeyush-tiwari-105b22323/", label: "LinkedIn" },
+                  { icon: <Linkedin className="w-5 h-5" />, link: "https://www.linkedin.com/in/peeyush-tiwari/", label: "LinkedIn" },
                   { icon: <Mail className="w-5 h-5" />, link: "mailto:tiwari.peeyush2006@gmail.com", label: "Email" },
                   { icon: <SiLeetcode className="w-5 h-5" />, link: "https://leetcode.com/u/Peeyush_Tiwari/", label: "LeetCode" }
                 ].map((social, idx) => (
